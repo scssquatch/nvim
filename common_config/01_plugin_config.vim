@@ -8,7 +8,6 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
 
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tomtom/tcomment_vim')
-
   call dein#add('tpope/vim-endwise')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-rake')
@@ -17,6 +16,13 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   call dein#add('vim-scripts/ruby-matchit')
   call dein#add('tpope/vim-abolish')
   call dein#add('tpope/vim-sleuth')
+
+" Neomake for async static linting
+  call dein#add('neomake/neomake')
+    let g:neomake_eruby_rubocop_maker = {'exe': 'rubocop'}
+    let g:neomake_eruby_enabled_makers = ['rubocop']
+    autocmd! BufWritePost * Neomake
+
 
 " NERDTree for project drawer
   call dein#add('scrooloose/nerdtree')

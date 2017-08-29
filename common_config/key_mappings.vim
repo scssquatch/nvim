@@ -6,7 +6,7 @@ nmap <Leader>W :set nowrap<cr>
 nmap gW :only<cr>
 
 " go to the alternate file (previous buffer) with g-enter
-nmap g\\ 
+nmap g <C-^>
 
 " shortcuts for frequenly used files
 nmap gs :e db/schema.rb<cr>
