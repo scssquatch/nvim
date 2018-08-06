@@ -16,13 +16,15 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   call dein#add('vim-scripts/ruby-matchit')
   call dein#add('tpope/vim-abolish')
   call dein#add('tpope/vim-sleuth')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('mxw/vim-jsx')
 
 " Neomake for async static linting
   call dein#add('neomake/neomake')
     let g:neomake_eruby_rubocop_maker = {'exe': 'rubocop'}
     let g:neomake_eruby_enabled_makers = ['rubocop']
+    let g:neomake_elixir_enabled_makers = ['mix']
     autocmd! BufWritePost * Neomake
-
 
 " NERDTree for project drawer
   call dein#add('scrooloose/nerdtree')
@@ -141,6 +143,12 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   nmap <Leader>rn :wa<CR> :call RunNearestSpec()<CR>
   nmap <Leader>rl :wa<CR> :call RunLastSpec()<CR>
   nmap <Leader>ra :wa<CR> :call RunAllSpecs()<CR>
+
+" Elixir vim stuff
+  call dein#add('elixir-editors/vim-elixir')
+  call dein#add('c-brenn/phoenix.vim')
+  call dein#add('tpope/vim-projectionist')
+
 
 call dein#end()
 
