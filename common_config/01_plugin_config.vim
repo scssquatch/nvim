@@ -24,6 +24,8 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     let g:neomake_eruby_rubocop_maker = {'exe': 'rubocop'}
     let g:neomake_eruby_enabled_makers = ['rubocop']
     let g:neomake_elixir_enabled_makers = ['mix']
+    let g:neomake_javascript_enabled_makers = ['eslint']
+    let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
     autocmd! BufWritePost * Neomake
 
 " NERDTree for project drawer
@@ -66,7 +68,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
       let g:ctrlp_user_command = "ag %s -l --nocolor -g ''"
 
       " ag is fast enough that CtrlP doesn't need to cache
-      let g:ctrlp_use_caching = 0
+      let g:ctrlp_use_caching = 1
     endif
 
 " Tagbar for navigation by tags using CTags
@@ -77,9 +79,8 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     map <C-\> :tnext<CR>
 
 " ZoomWin to fullscreen a particular buffer without losing others
-  call dein#add('vim-scripts/ZoomWin')
-    map <Leader>z :ZoomWin<CR>
-    map <Leader><Leader> :ZoomWin<CR>
+  call dein#add('troydm/zoomwintab.vim')
+    map <Leader>z :ZoomWinTabToggle<CR>
 
 " Unimpaired for keymaps for quicky manipulating lines and files
   call dein#add('tpope/vim-unimpaired')
@@ -138,7 +139,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
 " Easy async RSpec running
   call dein#add('thoughtbot/vim-rspec')
   call dein#add('tpope/vim-dispatch')
-  let g:rspec_command = 'bundle exec rspec --format=progress --no-profile {spec}'
+  let g:rspec_command = '!bundle exec rspec --format=progress --no-profile {spec}'
   nmap <Leader>rc :wa<CR> :call RunCurrentSpecFile()<CR>
   nmap <Leader>rn :wa<CR> :call RunNearestSpec()<CR>
   nmap <Leader>rl :wa<CR> :call RunLastSpec()<CR>
