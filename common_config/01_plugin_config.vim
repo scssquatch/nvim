@@ -26,6 +26,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     let g:neomake_elixir_enabled_makers = ['mix']
     let g:neomake_javascript_enabled_makers = ['eslint']
     let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+    let g:neomake_haml_enabled_makers = ['hamllint']
     autocmd! BufWritePost * Neomake
 
 " NERDTree for project drawer
@@ -67,8 +68,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
       " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
       let g:ctrlp_user_command = "ag %s -l --nocolor --hidden -g ''"
 
-      " ag is fast enough that CtrlP doesn't need to cache
-      let g:ctrlp_use_caching = 0
+      let g:ctrlp_use_caching = 1
     endif
 
 " Tagbar for navigation by tags using CTags
@@ -93,8 +93,8 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     vmap <C-Down> ]egv
 
 " gundo for awesome undo tree visualization
-  call dein#add('sjl/gundo.vim')
-    map <Leader>h :GundoToggle<CR>
+  call dein#add('mbbill/undotree')
+    map <Leader>h :UndotreeToggle<CR>
 
 " rails.vim, nuff' said
   call dein#add('tpope/vim-rails')
@@ -149,7 +149,6 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   call dein#add('elixir-editors/vim-elixir')
   call dein#add('c-brenn/phoenix.vim')
   call dein#add('tpope/vim-projectionist')
-
 
 call dein#end()
 
