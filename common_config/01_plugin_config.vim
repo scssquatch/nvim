@@ -53,23 +53,13 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     nmap gp :cprev<CR>
     nmap gl :cwindow<CR>
 
-" CtrlP
-  call dein#add('ctrlpvim/ctrlp.vim')
-    nnoremap <Leader>b :<C-U>CtrlPBuffer<CR>
-    nnoremap <Leader>t :<C-U>CtrlP<CR>
-    nnoremap <Leader>T :<C-U>CtrlPTag<CR>
-    map <Leader>cpc :CtrlPClearCache<CR>
-
-    " The Silver Searcher
-    if executable('ag')
-      " Use ag over grep
-      set grepprg=ag\ --nogroup\ --nocolor
-
-      " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-      let g:ctrlp_user_command = "ag %s -l --nocolor --hidden -g ''"
-
-      let g:ctrlp_use_caching = 1
-    endif
+" Ctrlp like functionality
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('pbogut/fzf-mru.vim')
+  nnoremap <Leader>b :<C-U>Buffers<CR>
+  nnoremap <Leader>t :<C-U>Files<CR>
+  nnoremap <Leader>T :<C-U>FZFMru<CR>
 
 " Tagbar for navigation by tags using CTags
   call dein#add('majutsushi/tagbar')
