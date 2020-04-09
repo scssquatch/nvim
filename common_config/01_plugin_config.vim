@@ -18,6 +18,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   call dein#add('tpope/vim-sleuth')
   call dein#add('slim-template/vim-slim')
   call dein#add('mxw/vim-jsx')
+  call dein#add('isRuslan/vim-es6')
 
 " Neomake for async static linting
   call dein#add('neomake/neomake')
@@ -25,8 +26,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
     let g:neomake_eruby_enabled_makers = ['rubocop']
     let g:neomake_elixir_enabled_makers = ['mix']
     let g:neomake_javascript_enabled_makers = ['eslint']
-    let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-    let g:neomake_haml_enabled_makers = ['hamllint']
+    let g:neomake_haml_enabled_makers = []
     autocmd! BufWritePost * Neomake
 
 " NERDTree for project drawer
@@ -60,6 +60,7 @@ call dein#begin(expand('~/.vim/dein')) " plugins' root path
   nnoremap <Leader>b :<C-U>Buffers<CR>
   nnoremap <Leader>t :<C-U>Files<CR>
   nnoremap <Leader>T :<C-U>FZFMru<CR>
+  nnoremap <Leader>B :<C-U>FZFMru<CR>
 
 " Tagbar for navigation by tags using CTags
   call dein#add('majutsushi/tagbar')

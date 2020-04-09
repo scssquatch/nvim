@@ -104,6 +104,9 @@ au BufNewFile,BufRead *.haml set indentkeys=o,O,*<Return>,=else,=elsif,=rescue,=
 " nghaml is haml
 au BufNewFile,BufRead *.nghaml set filetype=haml
 
+" es6 is js
+au BufNewFile,BufRead *.js.es6 set filetype=javascript
+
 " Set encoding
 set encoding=utf-8
 
